@@ -1,0 +1,7 @@
+FROM dockcross/android-arm
+
+ENV DEFAULT_DOCKCROSS_IMAGE custom-dockcross-android-arm
+
+RUN mkdir -p /usr/share/man/man1
+RUN apt-get install openjdk-11-jdk -y
+
