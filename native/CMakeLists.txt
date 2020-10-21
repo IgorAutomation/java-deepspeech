@@ -12,6 +12,27 @@ message(STATUS "CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}
 message(STATUS "RUNTIME_OUTPUT_DIRECTORY ${RUNTIME_OUTPUT_DIRECTORY}")
 message(STATUS "CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY}")
 
+# Determine the platform.
+
+if(NOT "${PACKAGE_NAME}")
+    if("${CMAKE_SYSTEM_NAME}" STREQUAL "Darwin")
+        set(OS_MACOS 1)
+        set(OS_POSIX 1)
+        set(PACKAGE_NAME darwin-x86_64)
+        add_definitions(-DOS_MACOS -DOS_POSIX -DUSE_GLFW)
+
+    elseif("${CMAKE_SYSTEM_NAME}" STREQUAL "Linux")
+        set(OS_LINUX 1)
+        set(OS_POSIX 1)
+        set(PACKAGE_NAME linux-x86_64)
+        add_definitions(-DOS_LINUX -DOS_POSIX -DUSE_EGL)
+
+    endif()
+else()
+
+
+endif()
+
 if(CMAKE_BUILD_TYPE MATCHES Debug)
     add_definitions(-DDEBUG=1 -D_DEBUG=1)
     set(CMAKE_CONFIGURATION_TYPES Debug)
