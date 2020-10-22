@@ -1,6 +1,7 @@
 # Project specific stuff
 native/src/main/generated
 native/cmake-build-*
+kotlin/src/main/resources/native
 .idea
 
 # Ignore Gradle project-specific cache directory

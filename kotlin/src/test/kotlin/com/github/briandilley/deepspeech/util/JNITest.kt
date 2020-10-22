@@ -8,29 +8,32 @@ internal class JNITest {
     @Test
     fun `Ensure that operatingSystem returns an acceptable answer`() {
 
-        JNI.init(properties = mapOf("os.name" to "Redhat Linux"))
+        JNI.configure(properties = mapOf(OS_NAME to "Redhat Linux"))
         assertEquals(JNI.LINUX, JNI.operatingSystem)
 
-        JNI.init(properties = mapOf("os.name" to "Linux"))
+        JNI.configure(properties = mapOf(OS_NAME to "Linux"))
         assertEquals(JNI.LINUX, JNI.operatingSystem)
 
-        JNI.init(properties = mapOf("os.name" to "macintosh"))
+        JNI.configure(properties = mapOf(OS_NAME to "macintosh"))
         assertEquals(JNI.DARWIN, JNI.operatingSystem)
 
-        JNI.init(properties = mapOf("os.name" to "MacOS"))
+        JNI.configure(properties = mapOf(OS_NAME to "MacOS"))
         assertEquals(JNI.DARWIN, JNI.operatingSystem)
 
-        JNI.init(properties = mapOf("os.name" to "osx"))
+        JNI.configure(properties = mapOf(OS_NAME to "osx"))
         assertEquals(JNI.DARWIN, JNI.operatingSystem)
 
-        JNI.init(properties = mapOf("os.name" to "Some sorta miggity with Os X"))
+        JNI.configure(properties = mapOf(OS_NAME to "Some sorta miggity with Os X"))
         assertEquals(JNI.DARWIN, JNI.operatingSystem)
 
-        JNI.init(properties = mapOf("os.name" to "darwin"))
+        JNI.configure(properties = mapOf(OS_NAME to "darwin"))
         assertEquals(JNI.DARWIN, JNI.operatingSystem)
 
-        JNI.init(properties = mapOf("os.name" to "Windows 10"))
+        JNI.configure(properties = mapOf(OS_NAME to "Windows 10"))
         assertEquals(JNI.WINDOWS, JNI.operatingSystem)
+
+        JNI.configure(properties = mapOf(OS_NAME to "FreeBSD"))
+        assertEquals(JNI.BSD, JNI.operatingSystem)
     }
 
     @Test
@@ -41,18 +44,24 @@ internal class JNITest {
                         .map { v -> e.key to v } }
                 .shuffled()
                 .forEach {
-                    JNI.init(properties = mapOf("os.arch" to it.second))
+                    JNI.configure(properties = mapOf(OS_ARCH to it.second))
                     assertEquals(it.first, JNI.architecture)
                 }
     }
 
     @Test
     fun `Output some stuff`() {
-        JNI.init()
+        JNI.configure()
         println("===============================================")
         println("  JNI.operatingSystem: ${JNI.operatingSystem}")
         println("  JNI.architecture: ${JNI.architecture}")
         println("===============================================")
+    }
+
+    @Test
+    fun `Can extract package`() {
+        JNI.configure()
+        JNI.extractPackage("java_deepspeech_jni")
     }
 
 }

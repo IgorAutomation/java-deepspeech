@@ -1,0 +1,7 @@
+FROM dockcross/linux-x86
+
+ENV DEFAULT_DOCKCROSS_IMAGE custom-dockcross-linux-x86
+
+RUN mkdir -p /usr/share/man/man1
+RUN apt-get install openjdk-11-jdk -y
+
