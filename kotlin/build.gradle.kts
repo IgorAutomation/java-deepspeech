@@ -5,11 +5,11 @@ val HOST_ARCH = "${System.getProperty("os.name").toLowerCase().replace("mac os x
 val NATIVE_ARCHITECTURES = setOf(
         HOST_ARCH,
         "darwin-x86_64",
-        "linux-x86_64",
         "linux-x86",
-        "linux-arm64",
+        "linux-x86_64",
         "linux-armv6",
-        "linux-armv7")
+        "linux-armv7",
+        "linux-arm64")
 val JAVA_TARGET_VERSION = "1.8"
 
 fun buildNative(arch: String = HOST_ARCH) {

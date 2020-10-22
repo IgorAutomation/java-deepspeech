@@ -1,4 +1,4 @@
-package com.github.briandilley.deepspeech.util
+package com.igor.deepspeech.util
 
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test

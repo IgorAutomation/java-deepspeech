@@ -1,4 +1,4 @@
-package com.github.briandilley.deepspeech.util
+package com.igor.deepspeech.util
 
 import java.io.File
 import java.io.FileNotFoundException
