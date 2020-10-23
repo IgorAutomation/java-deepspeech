@@ -60,7 +60,8 @@ using namespace std;
         detach_java_env(); \
     }
 
-namespace java_deepspeech::jni {
+namespace java_deepspeech {
+namespace jni {
 
     inline std::u16string get_utf16_string_from_java(JNIEnv* env, jstring string) {
         auto len = env->GetStringLength(string);
@@ -129,6 +130,6 @@ namespace java_deepspeech::jni {
     jobject get_java_enum_by_native_ordinal(JNIEnv *env, const string& enumClass, const string& staticMethodName, jint ordinal);
 
     jint get_int_field_value(JNIEnv *env, jobject obj, const string& fieldName);
-
+}
 }
 #endif

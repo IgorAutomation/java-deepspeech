@@ -15,8 +15,8 @@
 
 using namespace java_deepspeech::jni;
 
-namespace java_deepspeech::jni {
-
+namespace java_deepspeech {
+namespace jni {
 
     class AbstractNativeObject {
     public:
@@ -73,7 +73,7 @@ namespace java_deepspeech::jni {
     std::shared_ptr<T> get_native_object(JNIEnv* env, jobject obj) {
         return std::static_pointer_cast<T>(get_abstract_native_object(env, obj));
     }
-
+}
 }
 
 #endif //JAVA_DEEPSPEECH_ABSTRACTNATIVEOBJECT_H
